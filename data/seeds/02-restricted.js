@@ -1,13 +1,10 @@
-
 exports.seed = function(knex) {
-  // Deletes ALL existing entries
-  return knex('table_name').del()
-    .then(function () {
-      // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
+  return knex("restricted")
+    .truncate()
+    .then(() => {
+      return knex("restricted").insert([
+        { secret_info: "You Shall Not Pass!" },
+        { secret_info: "Damn, you passed lol" }
       ]);
     });
 };
